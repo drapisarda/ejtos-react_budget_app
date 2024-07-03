@@ -36,13 +36,15 @@ const App = () => {
                     }
 
                     {
-                                                <div>
+                        <div>
                             <ExpenseList />
                         </div>
                     }
 
                     {
-                        /* Add ExpenseItem component here */
+                        <div>
+                            <ExpenseList />
+                        </div>
                     }
 
                     {
