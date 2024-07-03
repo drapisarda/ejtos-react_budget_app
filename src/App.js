@@ -44,12 +44,6 @@ const App = () => {
 
                     {
                         <div>
-                            <ExpenseList />
-                        </div>
-                    }
-
-                    {
-                        <div>
                             <AllocationForm />
                         </div>
                     }
