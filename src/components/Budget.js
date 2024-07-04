@@ -1,25 +1,22 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
 
+const maxBudget = 20000
+
 const Budget = () => {
-    const { budget, dispatch } = useContext(AppContext);
+    const { budget, dispatch, totalExpenses } = useContext(AppContext);
     let alertType = 'alert-secondary'
 
-    const updateDecoration = () => {
-        alertType = (Number(budget) === 0 )? 'alert-danger' : 'alert-secondary';
-    }
-
-    updateDecoration()
-
     const handleBudgetChange = (event) => {
-        if (event.target.value < 0 ) return
-        
+        let {value} = event.target
+        if (value < 0 ) return
+        if (value < totalExpenses ) value = totalExpenses 
+        if (value > maxBudget ) value = maxBudget 
+
         dispatch({
             type: 'SET_BUDGET',
-            payload: event.target.value
+            payload: value
         })
-        
-        updateDecoration()
     }
 
     const decreaseBudget = () => {
@@ -29,8 +26,6 @@ const Budget = () => {
             type: 'SET_BUDGET',
             payload: budget - 10
         })
-
-        updateDecoration()
     }
 
     const increaseBudget = () => {
@@ -44,7 +39,7 @@ const Budget = () => {
 <div className={`alert ${alertType}`}>
 <span>Budget: £</span>
 <button onClick={event => increaseBudget()}>+</button>
-<input type="number" step="10" value={budget} onChange={handleBudgetChange}></input>
+<input style={{minWidth: '5rem'}} type="number" min={totalExpenses} max={maxBudget} step="10" value={budget} onChange={handleBudgetChange}></input>
 <button onClick={event => decreaseBudget()}>-</button>
 </div>
     );
