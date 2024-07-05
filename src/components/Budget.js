@@ -12,7 +12,10 @@ const Budget = () => {
     const handleBudgetChange = useCallback((value) => {
         if (value < 0) return;
         if (value < totalExpenses) value = totalExpenses;
-        if (value > maxBudget) value = maxBudget;
+        if (value > maxBudget) {
+            value = maxBudget;
+            alert('Burget can not excede ' + maxBudget)
+        }
         setInputValue(value);
 
         dispatch({
