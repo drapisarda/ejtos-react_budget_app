@@ -39,12 +39,12 @@ const ExpenseItem = (props) => {
     }
 
     return (
-        <tr class="expense-item">
+        <tr className="expense-item">
         <td>{props.name}</td>
         <td>{currency}{props.cost}</td>
-        <td className="center"><button class="expense-item__increase" onClick={event=> increaseAllocation(props.name)}><TiPlus /></button></td>
-        <td className="center"><button class="expense-item__decrease" onClick={event=> decreaseAllocation(props.name)}><TiMinus/></button></td>
-        <td className="center"><button class="expense-item__delete" size='1.5em' onClick={handleDeleteExpense}><TiTimes/></button></td>
+        <td className="center"><button className="expense-item__increase" onClick={event=> increaseAllocation(props.name)}><TiPlus /></button></td>
+        <td className="center"><button className="expense-item__decrease" onClick={event=> decreaseAllocation(props.name)}><TiMinus/></button></td>
+        <td className="center"><button className="expense-item__delete" size='1.5em' onClick={handleDeleteExpense}><TiTimes/></button></td>
         </tr>
     );
 };
