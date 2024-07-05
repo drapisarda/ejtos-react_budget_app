@@ -5,7 +5,7 @@ import debounce from '../utility/debounce';
 const maxBudget = 20000
 
 const Budget = () => {
-    const { budget, dispatch, totalExpenses } = useContext(AppContext);
+    const { budget, currency, dispatch, totalExpenses } = useContext(AppContext);
     const [inputValue, setInputValue] = useState(budget)
     let alertType = 'alert-secondary'
 
@@ -41,7 +41,7 @@ const Budget = () => {
 
     return (
 <div className={`alert ${alertType}`}>
-<span>Budget: £</span>
+<span>Budget: {currency}</span>
 <button onClick={increaseBudget}>+</button>
 <input style={{minWidth: '5rem'}} type="number" step="10" value={inputValue} onChange={event => handleValueUpdate(event.target.value)}></input>
 <button onClick={decreaseBudget}>-</button>
